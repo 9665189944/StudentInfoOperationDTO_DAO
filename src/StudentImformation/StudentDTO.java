@@ -17,13 +17,18 @@ public class StudentDTO {
     public StudentDTO() {
 
     }
-
-   public StudentDTO(Subject subject)
+    public StudentDTO(Subject subject)
    {
        this.subject=subject;
    }
     public StudentDTO(int studId) {
+
         this.studentID=studId;
+    }
+    public StudentDTO(int id, Subject subject) {
+
+        this.studentID=id;
+        this.subject=subject;
     }
 
     public StudentDTO(int studentID, String studentName, int studentAge) {
@@ -33,11 +38,7 @@ public class StudentDTO {
 
     }
 
-    public StudentDTO(int id, Subject subject) {
 
-        this.studentID=id;
-        this.subject=subject;
-    }
 
 
     public Subject getSubject() {

@@ -53,7 +53,83 @@ while (status) {
 
 }
     }
+    static void insertStudentInfo() {
+        System.out.println("Enter the Student ID");
+        int id = sc.nextInt();
+        System.out.println("Enter the Student Name");
+        String name = sc.next();
+        System.out.println("Enter the Student age ");
+        int age = sc.nextInt();
+        System.out.println("Enter Subject Details");
 
+        StudentDTO s1=new StudentDTO();
+        s1.setStudentID(id);
+        s1.setStudentName(name);
+        s1.setStudentAge(age);
+
+        //Using Object DAO Class
+        DAO d1 = new DAO();
+        Subject data=insertSubjectInfo();
+        s1.setSubject(data);
+        d1.insertInfoStudent(s1);
+        System.out.println("Add Data Successfully");
+    }
+    static Subject insertSubjectInfo()
+    {
+        System.out.println("Enter the Subject Id");
+        int id=sc.nextInt();
+        System.out.println("Enter the Subject Name");
+        String name=sc.next();
+        System.out.println("Enter the Subject Price ");
+        double price=sc.nextDouble();
+
+        Subject sub=new Subject();
+
+        sub.setSubID(id);
+        sub.setSubName(name);
+        sub.setSubFee(price);
+
+
+        return sub;
+    }
+
+    private static void deleteStudent() {
+        System.out.println("Enter Student Id");
+        int studId= sc.nextInt();
+        StudentDTO s=new StudentDTO(studId);
+        Boolean status= d1.deleteStudentRecord(s);
+        if (status)
+        {
+            System.out.println("Delete Successfully Record");
+        }else {
+            System.out.println("Invalid Record");
+        }
+    }
+    private static void dispalyStudent() {
+        ArrayList<StudentDTO> data=d1.displayStudentInfo();
+        for (StudentDTO data1:data
+        ) {
+            System.out.println(data1);
+        }
+
+    }
+
+
+    private static void updateStudentBySubject() {
+        System.out.println("Enter Student Id");
+        int id=sc.nextInt();
+        System.out.println("Enter Subject Name");
+        String subName= sc.next();
+        Subject name=new Subject(subName);
+        StudentDTO nam=new StudentDTO(id,name);
+        Boolean status=d1.updateStudentRecord(nam);
+        if (status)
+        {
+            System.out.println("Update Record");
+        }else {
+            System.out.println("Invalid Id");
+        }
+    }
     private static void searchStudentId() {
         System.out.println("Enter Student Id");
         int id= sc.nextInt();
@@ -66,14 +142,6 @@ while (status) {
 
     }
 
-    private static void dispalyStudent() {
-        ArrayList<StudentDTO> data=d1.displayStudentInfo();
-        for (StudentDTO data1:data
-             ) {
-            System.out.println(data1);
-        }
-
-    }
     private static void displayStudentBYSubject() {
 
         System.out.println("Enter Subject Name");
@@ -88,73 +156,10 @@ while (status) {
 
     }
 
-    private static void deleteStudent() {
-        System.out.println("Enter Student Id");
-        int studId= sc.nextInt();
-        StudentDTO s=new StudentDTO(studId);
-       Boolean status= d1.deleteStudentRecord(s);
-       if (status)
-       {
-           System.out.println("Delete Successfully Record");
-       }else {
-           System.out.println("Invalid Record");
-       }
-    }
-
-    private static void updateStudentBySubject() {
-        System.out.println("Enter Student Id");
-        int id=sc.nextInt();
-        System.out.println("Enter Subject Name");
-        String subName= sc.next();
-        Subject name=new Subject(subName);
-        StudentDTO nam=new StudentDTO(id,name);
-        Boolean status=d1.updateStudentRecord(nam);
-            if (status)
-            {
-                System.out.println("Update Record");
-            }else {
-                System.out.println("Invalid Id");
-            }
-    }
 
 
-    static void insertStudentInfo() {
-        System.out.println("Enter the Student ID");
-        int id = sc.nextInt();
-        System.out.println("Enter the Student Name");
-        String name = sc.next();
-        System.out.println("Enter the Student age ");
-        int age = sc.nextInt();
-        System.out.println("Enter Subject Details");
-
-         StudentDTO s1=new StudentDTO();
-        s1.setStudentID(id);
-        s1.setStudentName(name);
-        s1.setStudentAge(age);
-
-        //Using Object DAO Class
-        DAO d1 = new DAO();
-       Subject data=insertSubjectInfo();
-        s1.setSubject(data);
-        d1.insertInfoStudent(s1);
-        System.out.println("Add Data Successfully");
-    }
-        static Subject insertSubjectInfo()
-        {
-            System.out.println("Enter the Subject Id");
-            int id=sc.nextInt();
-            System.out.println("Enter the Subject Name");
-            String name=sc.next();
-            System.out.println("Enter the Subject Price ");
-            double price=sc.nextDouble();
-
-            Subject sub=new Subject();
-
-            sub.setSubID(id);
-            sub.setSubName(name);
-            sub.setSubFee(price);
 
 
-           return sub;
-    }
+
+
 }

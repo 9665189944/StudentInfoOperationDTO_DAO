@@ -26,19 +26,6 @@ public class DAO {
     }
 
 
-
-
-
-    public ArrayList<StudentDTO> displayStudentInfo() {
-
-        Iterator<StudentDTO> itr = data.iterator();
-        while (itr.hasNext()) {
-            s = itr.next();
-
-        }
-        return data;
-    }
-
     public Boolean deleteStudentRecord(StudentDTO s1) {
         boolean status=false;
         Iterator<StudentDTO> itr = data.iterator();
@@ -54,6 +41,19 @@ public class DAO {
         }
         return status;
     }
+
+
+
+    public ArrayList<StudentDTO> displayStudentInfo() {
+
+        Iterator<StudentDTO> itr = data.iterator();
+        while (itr.hasNext()) {
+            s = itr.next();
+
+        }
+        return data;
+    }
+
 
     public  Boolean updateStudentRecord(StudentDTO id)
     {
@@ -72,21 +72,6 @@ public class DAO {
         return status;
     }
 
-    public List<StudentDTO> displayStudentBySubject(StudentDTO S1) {
-        Iterator<StudentDTO> itr=data.listIterator();
-
-        List<StudentDTO> data1=new ArrayList<>();
-        while (itr.hasNext()) {
-            s= itr.next();
-            if (S1.getSubject().getSubName().equals(s.getSubject().getSubName())) {
-                       s=new StudentDTO(s.getStudentID(),s.getStudentName(),s.getStudentAge());
-                       data1.add(s);
-            }
-        }
-
-        return data1 ;
-    }
-
     public  List<StudentDTO> searchStudentById(StudentDTO sid)
     {
         Iterator<StudentDTO> itr=data.listIterator();
@@ -102,5 +87,19 @@ public class DAO {
         }
      return data1;
 
+    }
+    public List<StudentDTO> displayStudentBySubject(StudentDTO S1) {
+        Iterator<StudentDTO> itr=data.listIterator();
+
+        List<StudentDTO> data1=new ArrayList<>();
+        while (itr.hasNext()) {
+            s= itr.next();
+            if (S1.getSubject().getSubName().equals(s.getSubject().getSubName())) {
+                s=new StudentDTO(s.getStudentID(),s.getStudentName(),s.getStudentAge());
+                data1.add(s);
+            }
+        }
+
+        return data1 ;
     }
 }

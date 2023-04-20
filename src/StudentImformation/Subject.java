@@ -7,6 +7,16 @@ public class Subject {
     private  String subName;
     private  double subFee;
 
+
+    public Subject() {
+
+    }
+
+    public Subject(String sname) {
+
+        this.subName=sname;
+    }
+
     public Subject(int subID, String subName, double subFee) {
         this.subID = subID;
         this.subName = subName;
@@ -14,14 +24,6 @@ public class Subject {
     }
 
 
-
-    public Subject() {
-
-    }
-
-    public Subject(String sname) {
-        this.subName=sname;
-    }
 
     public int getSubID() {
 
